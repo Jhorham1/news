@@ -25,40 +25,40 @@ public class News {
     /**
      * Unique id
      */
-    private Long id;
+    private final Long id;
     /**
      * the Title.
      * Restrictions: not null, size>2
      */
-    private String title;
+    private final String title;
     /**
      * The source
      */
-    private String source;
+    private final String source;
     /**
      * The Author
      */
-    private String author;
+    private final String author;
     /**
      * the URL.
      */
-    private String url;
+    private final String url;
     /**
      * The URL of image.
      */
-    private String urlImage;
+    private final String urlImage;
     /**
      * the Description.
      */
-    private String description;
+    private final String description;
     /**
      * The Content.
      */
-    private String content;
+    private final String content;
     /**
      * the Date of publish
      */
-    private ZonedDateTime publishedAt;
+    private final ZonedDateTime publishedAt;
 
     /**
      * The Constructor.
@@ -73,6 +73,7 @@ public class News {
      * @param publishedAt
      */
     public News(Long id, String title, String source, String author, String url, String urlImage, String description, String content, ZonedDateTime publishedAt) {
+        //TODO: add the validations
         this.id = id;
         this.title = title;
         this.source = source;
@@ -83,6 +84,8 @@ public class News {
         this.content = content;
         this.publishedAt = publishedAt;
     }
+
+
     /**
      *
      * @return the id.
@@ -97,30 +100,58 @@ public class News {
     public String getTitle() {
         return title;
     }
+    /**
+     *
+     * @return the sources.
+     */
 
     public String getSource() {
         return source;
     }
+    /**
+     *
+     * @return the author.
+     */
 
     public String getAuthor() {
         return author;
     }
+    /**
+     *
+     * @return the url.
+     */
 
     public String getUrl() {
         return url;
     }
+    /**
+     *
+     * @return the image.
+     */
 
     public String getUrlImage() {
         return urlImage;
     }
+    /**
+     *
+     * @return the description.
+     */
 
     public String getDescription() {
         return description;
     }
+    /**
+     *
+     * @return the content.
+     */
 
     public String getContent() {
         return content;
     }
+    /**
+     *
+     * @return the date of publish.
+     */
 
     public ZonedDateTime getPublishedAt() {
         return publishedAt;
