@@ -1,8 +1,6 @@
 /*
  * Copyright (c) 2020 Jhorham Petit-Mostafa,jhorham.petit@alumnos.ucn.cl
  *
- * Copyright <YEAR> <COPYRIGHT HOLDER>
- *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  *
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
@@ -12,8 +10,8 @@
 
 package cl.ucn.disc.dsm.jpetit.news.services;
 
-import com.github.javafaker.Faker;
-
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -31,6 +29,7 @@ import cl.ucn.disc.dsm.jpetit.news.model.News;
  * @author Jhorham Petit-Mostafa
  */
 public final class TestContractsImplFaker {
+
     /**
      * the logger.
      */
@@ -41,25 +40,35 @@ public final class TestContractsImplFaker {
      */
     @Test
     public void testRetrieveNews(){
+
         log.debug("Testing...");
+
         // The concrete implementation
         Contracts contracts = new ContractsImplFaker();
+
         // call the method..
         List<News> news = contracts.retrieveNews(5);
+
         // .. the list can't be null..
         Assertions.assertNotNull(news, "List was null :(");
+
         // .. the list can't be empty..
         Assertions.assertFalse(news.isEmpty(), "Empty list? :(" );
+
         // .. the size(list) = 5 ..
         Assertions.assertEquals(5,news.size(), "list size != 5 :(");
+
         // debug to log
         for (News n : news){
-            log.debug("news: {}", n);
+            log.debug("News: {}", ToStringBuilder.reflectionToString(n, ToStringStyle.MULTI_LINE_STYLE));
         }
+
         //size = 0
         Assertions.assertEquals(0,contracts.retrieveNews(0).size(),"List != 0");
+
         //size=3
         Assertions.assertEquals(3, contracts.retrieveNews(3).size(), "List != 3");
+
         //size=10
         Assertions.assertTrue(contracts.retrieveNews(10).size() <= 10, "List != 10");
 
@@ -73,33 +82,36 @@ public final class TestContractsImplFaker {
     public void testSaveNews(){
 
         log.debug("testing...");
-        //the contractsImplFaker
+
+        //the concrete implementation
         Contracts contracts = new ContractsImplFaker();
-        //create new faker
-        Faker faker = Faker.instance();
-        // The new attributes
-        for(int i = 0; i < 5 ; i++) {
-           Long id = Integer.toUnsignedLong(i);
-           String title = faker.book().title();
-           String source = faker.name().username();
-           String author = faker.name().fullName();
-           String url = faker.internet().url();
-           String urlImage = faker.internet().avatar();
-           String description = faker.harryPotter().quote();
-           String content = faker.lorem().paragraph(3);
-           ZonedDateTime publishedAt = org.threeten.bp.ZonedDateTime.now(ZoneId.of("-3"));
 
-           //Instance the testNew
-           News testNew = new News(id, title, source, author, url, urlImage, description, content, publishedAt);
-           //save the testNew into the contracts
-           contracts.saveNews(testNew);
-           //testing if the New is not null
-           Assertions.assertNotNull(testNew);
-           //get its size test it to be initial size + 1
-           Assertions.assertEquals(6, contracts.retrieveNews(5 + 1).size(), "size is not 6");
-       }
-        log.debug("Done.");
+        // Nullity
+        Assertions.assertThrows(IllegalArgumentException.class, () -> contracts.saveNews(null));
 
+        int size = contracts.retrieveNews(1000).size();
+        log.debug("Size: {}.", size);
+
+        // Saving ok?
+        News news = new News(
+                "The title",
+                "The Source",
+                "The Author",
+                "The Url",
+                "The urlImage",
+                "The Description",
+                "The Content",
+                ZonedDateTime.now(ZoneId.of("-3")));
+        contracts.saveNews(news);
+
+        // One more time!
+        int newSize = contracts.retrieveNews(1000   ).size();
+        Assertions.assertEquals(size + 1, newSize, "Wrong size!");
+
+        // Save duplicated
+        Assertions.assertThrows(IllegalArgumentException.class, () -> contracts.saveNews(news));
+
+        log.debug(".. Done.");
     }
 }
 
