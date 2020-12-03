@@ -1,8 +1,6 @@
 /*
  * Copyright (c) 2020 Jhorham Petit-Mostafa,jhorham.petit@alumnos.ucn.cl
  *
- * Copyright <YEAR> <COPYRIGHT HOLDER>
- *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  *
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
@@ -12,8 +10,8 @@
 
 package cl.ucn.disc.dsm.jpetit.news.services;
 
-import com.github.javafaker.Faker;
-
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -21,51 +19,44 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-import cl.ucn.disc.dsm.jpetit.news.model.News;
-
-
 /**
- * Testing of ContractImpl.
+ * Testing ContrantractsImplNewsAp
+ *
  * @author Jhorham Petit-Mostafa
  */
-public class TestContractsimpl {
+import cl.ucn.disc.dsm.jpetit.news.model.News;
+
+public class TestContractsImplNewsApi {
+
     /**
-     * the logger.
+     * The logger.
      */
-    private static final Logger log = LoggerFactory.getLogger(TestContractsimpl.class);
+    private static final Logger log = LoggerFactory.getLogger(TestContractsImplNewsApi.class);
 
     /**
-     * The Test of Retrieve news.
-     */
-    @Test
-    public void testRetrieveNews(){
-        log.debug("Testing...");
-        //the implementation
-        Contracts contracts = new Contractsimpl();
-        // call the method
-        List<News> news = contracts.retrieveNews(5);
-        Assertions.assertNotNull(news, "List was null :(");
-        Assertions.assertTrue(news.size() != 0, "Empty list? :("  );
-        Assertions.assertTrue(news.size() == 5, "List size != 5 :(");
-
-
-        log.debug("Done.");
-
-    }
-
-    /**
-     * show the faker
+     * The test of retrieve news.
      */
     @Test
-    public void testFaker () {
-        Faker faker = Faker.instance();
-        for (int i=0; i<5; i++){
-            log.debug("Name:{}", faker.name().fullName());
-            // FIXME: Remover
-            System.out.println("name:" + faker.name().fullName());
+    public void testRetrieveNews() {
 
-            System.out.println("Cat:" + faker.cat().name());
+        log.debug("Testing..");
+
+        // The Contracts
+        Contracts contracts = new ContractsImplNewsApi("87059831b6b444c999918bb3477f7917");
+
+        // The list of news
+        int size = 20;
+        List<News> news = contracts.retrieveNews(size);
+
+        // Validations!
+        Assertions.assertNotNull(news, "List null !!");
+        Assertions.assertEquals(size, news.size(), "Wrong size!");
+
+        // Show the news
+        for (News n : news) {
+            log.debug("News: {}.", ToStringBuilder.reflectionToString(n, ToStringStyle.MULTI_LINE_STYLE));
         }
 
+        log.debug(".. end.");
     }
 }
