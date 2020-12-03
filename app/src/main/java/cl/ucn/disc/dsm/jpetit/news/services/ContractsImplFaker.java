@@ -20,33 +20,38 @@ import org.threeten.bp.ZoneId;
 import org.threeten.bp.ZonedDateTime;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import cl.ucn.disc.dsm.jpetit.news.model.News;
+import cl.ucn.disc.dsm.jpetit.news.utils.Validation;
 
 /**
  * The Faker implementation of{@Link Contracts}.
  * @author Jhorham Petit-Mostafa
  */
 public final class ContractsImplFaker implements Contracts {
+
     /**
      * The logger.
      */
     private static final Logger log = LoggerFactory.getLogger(ContractsImplFaker.class);
+
     /**
      * The list of news.
      */
     private final List<News> theNews = new ArrayList<>();
+
     /**
      * The Constructor: Generate 5 {@Link News}.
      */
     public ContractsImplFaker(){
+
         // The Faker to use
         Faker faker = Faker.instance();
 
         for (int i = 0; i < 5 ; i++){
             this.theNews.add(new News(
-            Integer.toUnsignedLong(i),
             faker.book().title(),
             faker.name().username(),
             faker.name().fullName(),
@@ -67,20 +72,36 @@ public final class ContractsImplFaker implements Contracts {
      */
     @Override
     public List<News> retrieveNews(final Integer size) {
-        if (size >theNews.size()){
-            return this.theNews.subList(0, theNews.size());
+
+        //Return all the data
+        if (size > theNews.size()){
+            return Collections.unmodifiableList(this.theNews);
         }
 
         //The last "size" elements.
-        return theNews.subList(theNews.size() - size, theNews.size());
+        return Collections.unmodifiableList(
+                theNews.subList(theNews.size() - size, theNews.size())
+        );
     }
+
     /**
      * save one News into the System.
      * @param news to save.
      */
     @Override
     public void saveNews(final News news){
-        // FIXME: Don't allow duplicated !!
+
+        // Nullity
+        Validation.notNull(news,"news");
+
+        // Check duplicates
+        for (News n: this.theNews) {
+            if  (n.getId().equals(news.getId())){
+                throw new   IllegalArgumentException("Can't allow duplicate news!");
+            }
+        }
+
+        // Add news
         this.theNews.add(news);
     }
 }
