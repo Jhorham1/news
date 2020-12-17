@@ -23,7 +23,12 @@ import org.threeten.bp.ZonedDateTime;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import cl.ucn.disc.dsm.jpetit.news.model.News;
 import cl.ucn.disc.dsm.jpetit.news.utils.Validation;
@@ -119,6 +124,14 @@ public class ContractsImplNewsApi implements Contracts {
     }
 
     /**
+     * The Predicator to filter
+     */
+    private static <T> Predicate<T> distintByKey(Function<? super T, ?> keyExtractor) {
+        Map<Object, Boolean> seen = new ConcurrentHashMap<>();
+        return t -> seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
+    }
+
+    /**
      * Get the list of News.
      *
      * @param size size of the list.
@@ -127,20 +140,30 @@ public class ContractsImplNewsApi implements Contracts {
     @Override
     public List<News> retrieveNews(Integer size) {
         try {
+
+            // Get the list of Article
             List<Article> articles = newsApiService.getTopHeadlines(
                     "technology", size
             );
 
             // The list of Articles to List of News
-            List<News> news = new ArrayList<>();
+            List<News> rawNews = new ArrayList<>();
             for (Article article : articles) {
                 // log.debug("Article: {}", ToStringBuilder.reflectionToString(article, ToStringStyle.MULTI_LINE_STYLE));
-                news.add(toNews(article));
+                rawNews.add(toNews(article));
             }
-            return news;
+
+            // Return the news filtered and sorted by date
+            return rawNews.stream()
+                    // Remove the duplicates (by keys)
+                    .filter(distintByKey(News::getId))
+                    // Order by date
+                    .sorted((k1, k2) -> k2.getPublishedAt().compareTo(k1.getPublishedAt()))
+                    .collect(Collectors.toList());
+
         } catch (IOException ex) {
-            log.error("Error", ex);
-            return null;
+            // Encapsulate!
+            throw new RuntimeException(ex);
         }
     }
 
