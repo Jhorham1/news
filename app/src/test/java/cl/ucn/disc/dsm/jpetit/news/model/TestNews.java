@@ -20,7 +20,7 @@ import org.threeten.bp.ZonedDateTime;
 /**
  * Testing of News.
  *
- * @author Jhorham Petit-Mostafa.
+ * @author Jhorham Petit-Mostafa y Nector Cortés
  */
 public class TestNews {
 
