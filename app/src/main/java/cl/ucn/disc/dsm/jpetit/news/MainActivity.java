@@ -25,16 +25,16 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.content.ClipData;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
+import android.os.Handler;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.ListView;
-import android.widget.Switch;
+import android.widget.Toast;
 
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ModelAdapter;
@@ -49,6 +49,9 @@ import cl.ucn.disc.dsm.jpetit.news.model.NewsItem;
 import cl.ucn.disc.dsm.jpetit.news.services.Contracts;
 import cl.ucn.disc.dsm.jpetit.news.services.ContractsImplNewsApi;
 
+
+
+
 /**
  * the main class.
  *
@@ -61,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
     // Create SharedPreferences object for Boolean value for manage theme
     SharedPreferences sharedPreferences = null;
+
+    // Swipe Refreh
+    SwipeRefreshLayout swipeLayout;
 
     /**
      * The Logger.
@@ -127,8 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-        // Get the news in the background thread
+        /// Get the news in the background thread
         AsyncTask.execute(() -> {
 
             // Using the contracts to get the news ..
@@ -142,6 +147,44 @@ public class MainActivity extends AppCompatActivity {
                 newsAdapter.add(listNews);
             });
         });
+
+        swipeLayout = findViewById(R.id.swipeContainer);
+        // Adding Listener
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code here
+                Toast.makeText(getApplicationContext(), "Actualizado", Toast.LENGTH_LONG).show();
+                // To keep animation for 4 seconds
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+                        /// Get the news in the background thread
+                        AsyncTask.execute(() -> {
+
+                            // Using the contracts to get the news ..
+                            Contracts contracts = new ContractsImplNewsApi("87059831b6b444c999918bb3477f7917");
+
+                            // Get the News fron NewsApi (internet!)
+                            List<News> listNews = contracts.retrieveNews(30);
+
+                            // Set the adapter!
+                            runOnUiThread(() -> {
+                                newsAdapter.add(listNews);
+                            });
+                        });
+                        swipeLayout.setRefreshing(false);
+                    }
+                }, 3000); // Delay in millis
+            }
+        });
+        // Scheme colors for animation
+        swipeLayout.setColorSchemeColors(
+                getResources().getColor(android.R.color.holo_blue_bright),
+                getResources().getColor(android.R.color.holo_green_light),
+                getResources().getColor(android.R.color.holo_orange_light),
+                getResources().getColor(android.R.color.holo_red_light)
+        );
+
+
     }
 }
-
