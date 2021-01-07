@@ -20,17 +20,25 @@
 package cl.ucn.disc.dsm.jpetit.news;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ClipData;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.Switch;
 
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ModelAdapter;
+import com.suke.widget.SwitchButton;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,11 +51,17 @@ import cl.ucn.disc.dsm.jpetit.news.services.Contracts;
 import cl.ucn.disc.dsm.jpetit.news.services.ContractsImplNewsApi;
 
 /**
- *the main class.
+ * the main class.
  *
  * @author Jhorham Petit-Mostafa.
  */
 public class MainActivity extends AppCompatActivity {
+
+    // Create object of switch
+    SwitchCompat switchCompat;
+
+    // Create SharedPreferences object for Boolean value for manage theme
+    SharedPreferences sharedPreferences = null;
 
     /**
      * The Logger.
@@ -72,11 +86,48 @@ public class MainActivity extends AppCompatActivity {
         FastAdapter<NewsItem> fastAdapter = FastAdapter.with(newsAdapter);
         fastAdapter.withSelectable(false);
 
-        //The Recycler view
+        // The Recycler view
         RecyclerView recyclerView = findViewById(R.id.am_rv_news);
         recyclerView.setAdapter(fastAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+        // The Switch
+        switchCompat = findViewById(R.id.switchCompat);
+
+        // save the current mode in a SharedPreferences object
+        sharedPreferences = getSharedPreferences("night", 0);
+        Boolean booleanValue = sharedPreferences.getBoolean("night_mode", true);
+
+
+        if (booleanValue) {
+
+            // to retrieve the current night mode type we use the method
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            switchCompat.setChecked(true);
+        }
+
+        // on switchCompat button call on setOnChangeListener
+        switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                // if user is Check switch Button then apply night mode on if not check then apply night mode off
+                if (isChecked) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    switchCompat.setChecked(true);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("night_mode", true);
+                    editor.commit();
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    switchCompat.setChecked(false);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("night_mode", false);
+                    editor.commit();
+                }
+            }
+        });
 
         // Get the news in the background thread
         AsyncTask.execute(() -> {
@@ -92,6 +143,6 @@ public class MainActivity extends AppCompatActivity {
                 newsAdapter.add(listNews);
             });
         });
-
     }
 }
+
