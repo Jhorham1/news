@@ -38,7 +38,6 @@ import android.widget.Switch;
 
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ModelAdapter;
-import com.suke.widget.SwitchButton;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
