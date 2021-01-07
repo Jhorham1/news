@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="colorPrimary">@color/black900</color>
+    <color name="colorPrimaryDark">@color/black</color>
+    <color name="colorAccent">@color/blue_1200</color>
+    <color name="backgroundNews">@color/black800</color>
+    <color name="lineDivider">@color/green_800</color>
+    
+
+    <!-- Text -->
+    <color name="textColor">@color/white</color>
+    <color name="textColorPrimary">@color/white</color>
+    <color name="textColorSecondary">@color/green_800</color>
+    <color name="textColorTertiary">@color/green_700</color>
+
+    <!-- Toolbar -->
+    <color name="statusBarColor">@color/green_1100</color>
+    <color name="toolbarBackground">@color/green_900</color>
+    <color name="windowBackground">@color/green_0</color>
+    <color name="dividerColor">@color/green_300</color>
+    <color name="navigationBarColor">@color/green_1100</color>
+
+    <color name="toolbarTitleTextColor">@color/green_0</color>
+    <color name="toolbarSubtitleTextColor">@color/green_50</color>
+</resources>
