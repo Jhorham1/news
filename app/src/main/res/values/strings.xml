@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">News</string>
+    <string name="text">Dark Mode</string>
+    <string name="textName">AppIson</string>
 </resources>
