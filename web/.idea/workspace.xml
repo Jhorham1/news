@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="12bc7f89-120e-4a4c-9d21-ec4de04b042a" name="Default Changelist" comment="">
+    <list default="true" id="12bc7f89-120e-4a4c-9d21-ec4de04b042a" name="Default Changelist" comment="feat(Laravel): create web application.">
       <change beforePath="$PROJECT_DIR$/../app/src/androidTest/java/cl/ucn/disc/dsm/jpetit/news/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/androidTest/java/cl/ucn/disc/dsm/jpetit/news/ExampleInstrumentedTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/cl/ucn/disc/dsm/jpetit/news/model/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/cl/ucn/disc/dsm/jpetit/news/model/News.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/test/java/cl/ucn/disc/dsm/jpetit/news/model/TestNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/test/java/cl/ucn/disc/dsm/jpetit/news/model/TestNews.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -133,6 +140,7 @@
       <path value="$PROJECT_DIR$/vendor/psy/psysh" />
       <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1mJWNkBygvqhClswg5AxIac2Olu" />
@@ -152,6 +160,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -168,8 +177,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609212137693</updated>
-      <workItem from="1609212139527" duration="2358000" />
+      <workItem from="1609212139527" duration="2705000" />
+      <workItem from="1609631654271" duration="801000" />
+      <workItem from="1609707325008" duration="3878000" />
+      <workItem from="1610247528431" duration="788000" />
+      <workItem from="1610248340729" duration="1877000" />
     </task>
+    <task id="LOCAL-00001" summary="feat(Laravel): create web application.">
+      <created>1609214714063</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1609214714063</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,10 +201,25 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat(Laravel): create web application." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(Laravel): create web application." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

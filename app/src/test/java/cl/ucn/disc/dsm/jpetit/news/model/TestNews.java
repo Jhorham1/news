@@ -51,7 +51,6 @@ public class TestNews {
         log.debug("The id: {}.",news.getId());
 
         //Assertions.assertEquals(1182003507361219134L, news.getId(), "Wrong id !");
-
         log.debug("Title null ..");
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
 
