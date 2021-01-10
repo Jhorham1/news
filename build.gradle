@@ -26,7 +26,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.0"
+        classpath 'com.android.tools.build:gradle:4.1.1'
 
         // plugin to find the lates libraries version
         classpath "com.github.ben-manes:gradle-versions-plugin:0.34.0"
