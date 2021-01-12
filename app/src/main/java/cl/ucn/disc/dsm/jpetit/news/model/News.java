@@ -13,6 +13,7 @@ package cl.ucn.disc.dsm.jpetit.news.model;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import net.openhft.hashing.LongHashFunction;
 
@@ -31,6 +32,7 @@ public final class News {
     /**
      * Unique id
      */
+    @PrimaryKey
     private final Long id;
 
     /**
