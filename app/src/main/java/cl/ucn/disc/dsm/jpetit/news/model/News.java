@@ -14,6 +14,7 @@ package cl.ucn.disc.dsm.jpetit.news.model;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import net.openhft.hashing.LongHashFunction;
@@ -97,6 +98,7 @@ public final class News {
      * @param content
      * @param publishedAt
      */
+    @Ignore
     public News(String title, String source, String author, String url, String urlImage,
                 String description, String content, ZonedDateTime publishedAt) {
 
