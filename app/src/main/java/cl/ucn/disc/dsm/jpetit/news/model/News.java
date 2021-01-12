@@ -39,6 +39,7 @@ public final class News {
      * the Title.
      * Restrictions: not null, size>2
      */
+    
     private final String title;
 
     /**
