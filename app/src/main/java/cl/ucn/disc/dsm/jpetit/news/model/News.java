@@ -24,7 +24,6 @@ import cl.ucn.disc.dsm.jpetit.news.utils.Validation;
  *
  * @author Jhorham Petit-Mostafa
  */
-
 public final class News {
 
     /**
@@ -72,7 +71,6 @@ public final class News {
      * the Date of publish
      */
     private final ZonedDateTime publishedAt;
-
 
     /**
      * The Constructor.
