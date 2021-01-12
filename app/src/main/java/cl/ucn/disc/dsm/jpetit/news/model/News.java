@@ -12,6 +12,7 @@ package cl.ucn.disc.dsm.jpetit.news.model;
 
 
 import androidx.annotation.NonNull;
+import androidx.room.Entity;
 
 import net.openhft.hashing.LongHashFunction;
 
@@ -24,7 +25,7 @@ import cl.ucn.disc.dsm.jpetit.news.utils.Validation;
  *
  * @author Jhorham Petit-Mostafa
  */
-
+@Entity
 public final class News {
 
     /**
