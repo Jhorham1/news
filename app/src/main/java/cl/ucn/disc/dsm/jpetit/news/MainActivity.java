@@ -49,9 +49,6 @@ import cl.ucn.disc.dsm.jpetit.news.model.NewsItem;
 import cl.ucn.disc.dsm.jpetit.news.services.Contracts;
 import cl.ucn.disc.dsm.jpetit.news.services.ContractsImplNewsApi;
 
-
-
-
 /**
  * the main class.
  *
@@ -104,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("night", 0);
         Boolean booleanValue = sharedPreferences.getBoolean("night_mode", true);
 
-
         if (booleanValue) {
 
             // to retrieve the current night mode type we use the method
@@ -133,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
         /// Get the news in the background thread
         AsyncTask.execute(() -> {
 
@@ -149,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         swipeLayout = findViewById(R.id.swipeContainer);
+
         // Adding Listener
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -177,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
                 }, 3000); // Delay in millis
             }
         });
+
         // Scheme colors for animation
         swipeLayout.setColorSchemeColors(
                 getResources().getColor(android.R.color.holo_blue_bright),
@@ -184,7 +183,5 @@ public class MainActivity extends AppCompatActivity {
                 getResources().getColor(android.R.color.holo_orange_light),
                 getResources().getColor(android.R.color.holo_red_light)
         );
-
-
     }
 }

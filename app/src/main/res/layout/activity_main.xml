@@ -19,7 +19,6 @@
     android:visibility="visible"
     tools:context=".MainActivity">
 
-
     <!-- AppBarLayout -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

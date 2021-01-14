@@ -12,6 +12,10 @@ package cl.ucn.disc.dsm.jpetit.news.model;
 
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 import net.openhft.hashing.LongHashFunction;
 
@@ -24,53 +28,62 @@ import cl.ucn.disc.dsm.jpetit.news.utils.Validation;
  *
  * @author Jhorham Petit-Mostafa
  */
-
+@Entity
 public final class News {
 
     /**
      * Unique id
      */
+    @PrimaryKey
     private final Long id;
 
     /**
      * the Title.
      * Restrictions: not null, size>2
      */
+    @ColumnInfo
     private final String title;
 
     /**
      * The source
      */
+    @ColumnInfo
     private final String source;
 
     /**
      * The Author
      */
+    @ColumnInfo
     private final String author;
 
     /**
      * the URL.
      */
+    @ColumnInfo
     private final String url;
 
     /**
      * The URL of image.
      */
+    @ColumnInfo
     private final String urlImage;
 
     /**
      * the Description.
      */
+    @ColumnInfo
     private final String description;
 
     /**
      * The Content.
      */
+    @ColumnInfo
     private final String content;
 
     /**
      * the Date of publish
      */
+    @ColumnInfo
     private final ZonedDateTime publishedAt;
 
 
@@ -85,6 +98,7 @@ public final class News {
      * @param content
      * @param publishedAt
      */
+    @Ignore
     public News(String title, String source, String author, String url, String urlImage,
                 String description, String content, ZonedDateTime publishedAt) {
 
