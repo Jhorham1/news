@@ -10,82 +10,40 @@
 </head>
 <body>
 <div class="container-md">
-    <div class="card">
-        <div class="card-header">
-            <legend class="text-center header">Enter The News</legend>
-        </div>
-        <div class="card-body">
-            <form class="form" method="post">
-                <fieldset>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="title">Title</label>
-                            <input type="text" id="title" name="title" placeholder="Enter Title..." class="form-control"
-                                   required="required">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="author">Author</label>
-                            <input type="text" id="author" name="author" placeholder="Enter Author..."
-                                   class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="source">Source</label>
-                            <input type="text" id="source" name="source" placeholder="Enter Source..."
-                                   class="form-control">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="url">Url</label>
-                            <input type="text" id="url" name="url" placeholder="Enter Url..." class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="url_image">Url Image</label>
-                            <input type="text" id="url_image" name="url_image" placeholder="Enter Url image..."
-                                   class="form-control">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="published_at">Date</label>
-                            <input id="published_at" type="text" name="published_at" placeholder="Enter Date..."
-                                   class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea id="description" name="description" placeholder="Enter Description..."
-                                  class="form-control"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="content">Content</label>
-                        <textarea id="content" name="content" placeholder="Enter Content..."
-                                  class="form-control"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">News</label>
-                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
-                        <textarea class="form-control" id="message" name="message" placeholder="Enter your News "
-                                  rows="7"></textarea>
-                    </div>
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-lg">Upload News</button>
-                    </div>
-                </fieldset>
-                <legend class="text-sm-right">AppIson</legend>
-            </form>
-        </div>
-    </div>
+    <table class="table-auto w-full">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Source</th>
+            <th>Published At</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($News as $NewsItem)
+        <tr @if($loop->iteration % 2 == 0)class="bg-gray-200"@endif>
+            <td class="py-4">{{ $newsItem->title }}</td>
+            <td class="py-4">{{ $newsItem->author }}</td>
+            <td class="py-4">{{ $newsItem->source }}</td>
+            <td class="py-4">{{ Carbon\Carbon::parse($newsItem->published_at)->setTimezone($newsItem->timeZone->name)->format('d-m-Y H:i').' UTC'.$newsItem->timeZone->offset }}</td>
+            <td class="px-2 py-4">
+                <a class="px-4 py-2 bg-blue-400 rounded" href="{{ route('admin.news.edit', $newsItem) }}">
+                    Edit
+                </a>
+            </td>
+            <td class="px-2 py-4">
+                <form action="{{ route('admin.news.destroy', $newsItem) }}" class="delete-form-validation" method="POST" >
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="px-4 py-2 bg-red-400 rounded">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+        </tbody>
+    </table>
 </div>
 <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
