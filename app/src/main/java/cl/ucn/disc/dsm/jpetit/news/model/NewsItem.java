@@ -15,8 +15,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.mikepenz.fastadapter.items.ModelAbstractItem;
+import android.net.Uri;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.threeten.bp.format.DateTimeFormatter;
 
@@ -46,9 +47,7 @@ public final class NewsItem extends ModelAbstractItem<News, NewsItem, NewsItem.V
      */
     @NonNull
     @Override
-    public ViewHolder getViewHolder(@NonNull View view) {
-        return new ViewHolder(view);
-    }
+    public ViewHolder getViewHolder(@NonNull View view) { return new ViewHolder(view); }
 
     @Override
     public int getType() {
