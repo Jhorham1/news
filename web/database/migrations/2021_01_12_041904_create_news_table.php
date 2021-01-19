@@ -22,7 +22,7 @@ class CreateNewsTable extends Migration
             $table->string('url_image')->nullable();
             $table->string('description');
             $table->string('content');
-            $table->string('published_at');
+            $table->timestamp("published_at");
             $table->timestamps();
         });
     }
