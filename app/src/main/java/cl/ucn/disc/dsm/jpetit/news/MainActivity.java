@@ -42,6 +42,8 @@ import com.mikepenz.fastadapter.adapters.ModelAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import java.util.List;
 
 import cl.ucn.disc.dsm.jpetit.news.model.News;
