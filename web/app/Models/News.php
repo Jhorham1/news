@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
+    protected $fillable = [
+        'title',
+        'author',
+        'source',
+        'url',
+        'url_image',
+        'description',
+        'content',
+        'published_at'
+    ];
     use HasFactory;
 }

@@ -79,7 +79,9 @@
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-lg">Upload News</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Upload News
+
+                        </button>
                     </div>
                 </fieldset>
                 <legend class="text-sm-right">AppIson</legend>
