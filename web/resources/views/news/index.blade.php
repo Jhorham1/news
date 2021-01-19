@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,7 +17,7 @@
     <div class="card">
         <div class="card-header">
             <legend class="text-center header">Display News</legend>
-            <a href="{{ url('/news/create')}}" ><button  class="btn btn-primary btn-lg">Create News</button>
+            <a href="{{ url('/news/create')}}" ><button  class="btn btn-primary btn-lg">Create News</button></a>
         </div>
 
         <div class="card-body">
@@ -23,14 +26,14 @@
                 <th>Title</th>
                 <th>Author</th>
                 <th>Source</th>
-                <th>Options</th>
+                <th class="text-center">Options</th>
                 @foreach($news as $row)
                     <tr>
                         <th>{{$row['id']}}</th>
                         <th>{{$row['title']}}</th>
                         <th>{{$row['author']}}</th>
                         <th>{{$row['source']}}</th>
-                        <th>
+                        <th class="text-center">
                             <button type="submit" formaction="{{url('/news/update')}}" class="btn btn-primary btn-lg">edit</button>
                             <button type="submit" formaction="{{url('/news/delete')}}" class="btn btn-primary btn-lg">delete</button>
                         </th>
@@ -45,3 +48,4 @@
 <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>
+@endsection

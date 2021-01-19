@@ -8,6 +8,12 @@ use mysql_xdevapi\Exception;
 
 class NewsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Show index News
      *
@@ -20,14 +26,10 @@ class NewsController extends Controller
     public function store(Request $request){
         $new = $request->all();
         $neww=News::create($new);
-        return redirect()->route('news.index');
+        return redirect()->route('index');
     }
     public function create(){
         return view('news.create');
     }
-    public function saveNews(Request $request){
-        $p=new News($request->all());
-        $this->store($p);
-        return response('welcome');
-    }
+
 }
