@@ -30,7 +30,7 @@
                     <th>{{$row['author']}}</th>
                     <th>{{$row['source']}}</th>
                     <th>
-                        <button type="submit" formaction="{{url('/news/index')}}" class="btn btn-primary btn-lg">edit</button>
+                        <button type="submit" formaction="{{url('/news/update')}}" class="btn btn-primary btn-lg">edit</button>
                         <button type="submit" formaction="{{url('/news/delete')}}" class="btn btn-primary btn-lg">delete</button>
                     </th>
 

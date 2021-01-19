@@ -8,14 +8,20 @@ use mysql_xdevapi\Exception;
 
 class NewsController extends Controller
 {
-
+    /**
+     * Show index News
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(){
-
         $news=News::orderBy('id', 'ASC')->paginate();
         return view('news.index',compact('news'));
     }
     public function store(Request $request){
         $request->save();
+    }
+    public function create(){
+        return view('news.create');
     }
     public function saveNews(Request $request){
         $p=new News($request->all());
