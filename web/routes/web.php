@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::resource('/news', 'NewsController');
 Route::get('/index','NewsController@index');
 Route::get('/news/create', 'NewsController@create');
+Route::post('/create','NewsController@store');
+

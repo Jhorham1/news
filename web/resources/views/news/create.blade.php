@@ -15,7 +15,8 @@
             <legend class="text-center header">Enter The News</legend>
         </div>
         <div class="card-body">
-            <form class="form" method="post">
+            <form action="/create" method="POST">
+                {!! csrf_field() !!}
                 <fieldset>
 
                     <div class="form-row">
@@ -61,14 +62,14 @@
 
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea id="description" name="description" placeholder="Enter Description..."
-                                  class="form-control"></textarea>
+                        <input id="description" name="description" placeholder="Enter Description..."
+                                  class="form-control"></input>
                     </div>
 
                     <div class="form-group">
                         <label for="content">Content</label>
-                        <textarea id="content" name="content" placeholder="Enter Content..."
-                                  class="form-control"></textarea>
+                        <input id="content" name="content" placeholder="Enter Content..."
+                                  class="form-control"></input>
                     </div>
 
                     <div class="form-group">
@@ -79,7 +80,7 @@
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" formaction="{{url('/news/index')}}" class="btn btn-primary btn-lg">Upload News</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Upload News</button>
                     </div>
                 </fieldset>
                 <legend class="text-sm-right">AppIson</legend>

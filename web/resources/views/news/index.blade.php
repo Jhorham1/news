@@ -14,7 +14,7 @@
     <div class="card">
         <div class="card-header">
             <legend class="text-center header">Display News</legend>
-            <button type="submit" formaction="{{url('/news/create')}}" class="btn btn-primary btn-lg top-right">Create News</button>
+            <a href="{{ url('/news/create')}}" ><button  class="btn btn-primary btn-lg">Create News</button>
         </div>
 
         <div class="card-body">
@@ -25,14 +25,17 @@
                 <th>Source</th>
                 <th>Options</th>
                 @foreach($news as $row)
-                    <th>{{$row['id']}}</th>
-                    <th>{{$row['title']}}</th>
-                    <th>{{$row['author']}}</th>
-                    <th>{{$row['source']}}</th>
-                    <th>
-                        <button type="submit" formaction="{{url('/news/update')}}" class="btn btn-primary btn-lg">edit</button>
-                        <button type="submit" formaction="{{url('/news/delete')}}" class="btn btn-primary btn-lg">delete</button>
-                    </th>
+                    <tr>
+                        <th>{{$row['id']}}</th>
+                        <th>{{$row['title']}}</th>
+                        <th>{{$row['author']}}</th>
+                        <th>{{$row['source']}}</th>
+                        <th>
+                            <button type="submit" formaction="{{url('/news/update')}}" class="btn btn-primary btn-lg">edit</button>
+                            <button type="submit" formaction="{{url('/news/delete')}}" class="btn btn-primary btn-lg">delete</button>
+                        </th>
+                    </tr>
+
 
                 @endforeach
             </table>

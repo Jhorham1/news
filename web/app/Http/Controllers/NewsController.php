@@ -18,7 +18,9 @@ class NewsController extends Controller
         return view('news.index',compact('news'));
     }
     public function store(Request $request){
-        $request->save();
+        $new = $request->all();
+        $neww=News::create($new);
+        return redirect()->route('news.index');
     }
     public function create(){
         return view('news.create');
