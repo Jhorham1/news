@@ -15,8 +15,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.mikepenz.fastadapter.items.ModelAbstractItem;
+import android.net.Uri;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.threeten.bp.format.DateTimeFormatter;
 
@@ -46,9 +47,7 @@ public final class NewsItem extends ModelAbstractItem<News, NewsItem, NewsItem.V
      */
     @NonNull
     @Override
-    public ViewHolder getViewHolder(@NonNull View view) {
-        return new ViewHolder(view);
-    }
+    public ViewHolder getViewHolder(@NonNull View view) { return new ViewHolder(view); }
 
     @Override
     public int getType() {
@@ -78,6 +77,7 @@ public final class NewsItem extends ModelAbstractItem<News, NewsItem, NewsItem.V
         holder.source.setText(getModel().getSource());
         holder.description.setText(getModel().getDescription());
         holder.publishedAt.setText(FORMATTER.format(getModel().getPublishedAt()));
+        holder.urlImage.setImageURI(getModel().getUrlImage());
     }
 
     /**
@@ -93,6 +93,7 @@ public final class NewsItem extends ModelAbstractItem<News, NewsItem, NewsItem.V
         holder.source.setText(null);
         holder.description.setText(null);
         holder.publishedAt.setText(null);
+        holder.urlImage.setImageURI((Uri) null);
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {
@@ -102,6 +103,7 @@ public final class NewsItem extends ModelAbstractItem<News, NewsItem, NewsItem.V
         protected TextView source;
         protected TextView description;
         protected TextView publishedAt;
+        protected SimpleDraweeView urlImage;
 
         public ViewHolder(@NonNull View view) {
             super(view);
@@ -110,6 +112,7 @@ public final class NewsItem extends ModelAbstractItem<News, NewsItem, NewsItem.V
             this.source = view.findViewById(R.id.in_tv_source);
             this.description = view.findViewById(R.id.in_tv_description);
             this.publishedAt = view.findViewById(R.id.in_tv_published_at);
+            this.urlImage = view.findViewById(R.id.my_image_view);
         }
     }
 }
