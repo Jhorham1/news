@@ -35,7 +35,7 @@
             app:contentInsetEnd="8dp"
             app:contentInsetStart="8dp"
             app:navigationIcon="@drawable/ic_launcher_foreground"
-            app:subtitleTextColor="@color/textColor"
+            app:subtitleTextColor="@color/textColorPrimary"
             app:title="@string/app_name"
             app:titleTextColor="@color/textColorPrimary"
             app:subtitle="@string/textName"
