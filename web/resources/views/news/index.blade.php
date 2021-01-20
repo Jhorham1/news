@@ -26,6 +26,7 @@
                 <th>Title</th>
                 <th>Author</th>
                 <th>Source</th>
+
                 <th class="text-center">Options</th>
                 @foreach($news as $row)
                     <tr>
@@ -33,15 +34,18 @@
                         <th>{{$row['title']}}</th>
                         <th>{{$row['author']}}</th>
                         <th>{{$row['source']}}</th>
-                        <th class="text-center">
-                            <button type="submit" formaction="{{url('/news/update')}}" class="btn btn-primary btn-lg">edit</button>
-                            <button type="submit" formaction="{{url('/news/delete')}}" class="btn btn-primary btn-lg">delete</button>
+
+                        <th style="vertical-align: middle">
+                            <a href="{{route('show', $row->id)}}" class=" btn btn-primary btn-lg " >Show</a>
+                            <a href="{{route('destroy', $row->id)}}" class=" btn btn-primary btn-lg btn-danger" >Delete</a>
+
                         </th>
                     </tr>
 
 
                 @endforeach
             </table>
+            <legend class="text-sm-right">AppIson</legend>
         </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<!doctype html>
+    <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,81 +13,71 @@
 </head>
 <body>
 <div class="container-md">
+
     <div class="card">
         <div class="card-header">
-            <legend class="text-center header">Enter The News</legend>
+            <legend class="text-center header">Show new</legend>
             <a href="{{ url('/index')}}"><button  class="left btn btn-primary btn-lg ">Back</button></a>
         </div>
-
         <div class="card-body">
             <form action="/create" method="POST">
                 {!! csrf_field() !!}
-                <fieldset>
-
+                <fieldset id="new">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="title">Title</label>
-                            <input type="text" id="title" name="title" placeholder="Enter Title..." class="form-control"
-                                   required="required">
+                            <input name="title" class="form-control" type="text" value="{{ $new->title }}" readonly>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="author">Author</label>
-                            <input type="text" id="author" name="author" placeholder="Enter Author..."
-                                   class="form-control" required="required">
+                            <input name="author" class="form-control" type="text" value="{{ $new->author }}" readonly>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="source">Source</label>
-                            <input type="text" id="source" name="source" placeholder="Enter Source..."
-                                   class="form-control" required="required">
+                            <input name="source" class="form-control" type="text" value="{{ $new->source }}" readonly>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="url">Url</label>
-                            <input type="text" id="url" name="url" placeholder="Enter Url..." class="form-control" required="required">
+                            <input name="url" class="form-control" type="text" value="{{ $new->url }}" readonly>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="url_image">Url Image</label>
-                            <input type="text" id="url_image" name="url_image" placeholder="Enter Url image..."
-                                   class="form-control">
+                            <label for="url_image"> Url Image </label>
+                            <<input name="url_image" class="form-control" type="text" value="{{ $new->url_image }}" readonly>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="published_at">Date</label>
-                            <input id="published_at" type="text" name="published_at" placeholder="Enter Date..."
-                                   class="form-control" required="required">
+                            <input name="published_at" class="form-control" type="text" value="{{ $new->published_at }}" readonly>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <input id="description" name="description" placeholder="Enter Description..."
-                                  class="form-control" required="required">
+                        <input name="description" class="form-control" type="text" value="{{ $new->description }}" readonly>
+                    </div>
 
                     <div class="form-group">
                         <label for="content">Content</label>
-                        <textarea class="form-control" id="content" name="content" placeholder="Enter your News "
-                                  rows="7" required="required"></textarea>
+                        <textarea class="form-control" id="message" name="content" placeholder="{{ $new->content }}"
+                                  rows="7" readonly></textarea>
                     </div>
 
-                    <div>
 
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg">Upload News</button>
-                        </div>
-                    </div>
+
 
                 </fieldset>
                 <legend class="text-sm-right">AppIson</legend>
             </form>
         </div>
-        <legend class="text-sm-right">AppIson</legend>
+
     </div>
 </div>
 <script src="{{ asset('js/app.js') }}" defer></script>

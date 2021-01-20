@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e88153e7-eedb-43ef-abe1-7379c1c1e799" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../composer.phar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_12_041904_create_news_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/news/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NewsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NewsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_17_215250_create_news_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_17_215250_create_news_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/news/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/news/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/news/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/news/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +20,11 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -135,6 +145,7 @@
       <path value="$PROJECT_DIR$/vendor/facade/ignition" />
       <path value="$PROJECT_DIR$/vendor/facade/flare-client-php" />
       <path value="$PROJECT_DIR$/vendor/twbs/bootstrap" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1mxAixcucVuY9noYjoLkUDtSQVr" />
@@ -144,6 +155,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -166,7 +178,19 @@
       <option name="presentableId" value="Default" />
       <updated>1610425001784</updated>
       <workItem from="1610425003957" duration="488000" />
-      <workItem from="1610425496775" duration="6423000" />
+      <workItem from="1610425496775" duration="6705000" />
+      <workItem from="1610438082577" duration="31000" />
+      <workItem from="1610460717620" duration="826000" />
+      <workItem from="1610674596126" duration="682000" />
+      <workItem from="1610687669442" duration="315000" />
+      <workItem from="1610907019569" duration="6006000" />
+      <workItem from="1610920777304" duration="223000" />
+      <workItem from="1610936883765" duration="2268000" />
+      <workItem from="1611002930159" duration="4677000" />
+      <workItem from="1611036504923" duration="9664000" />
+      <workItem from="1611076386190" duration="5524000" />
+      <workItem from="1611092095846" duration="5523000" />
+      <workItem from="1611161375850" duration="5664000" />
     </task>
     <servers />
   </component>

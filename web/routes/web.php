@@ -18,7 +18,8 @@ Route::resource('/', 'NewsController');
 Route::get('/index','NewsController@index');
 Route::get('/news/create', 'NewsController@create');
 Route::post('/create','NewsController@store');
-
+Route::get('/news/idnews={id}/vista','NewsController@show')->name('show');
+Route::get('/news/idnews={id}/delete','NewsController@destroy')->name('destroy');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
