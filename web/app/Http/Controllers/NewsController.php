@@ -25,7 +25,7 @@ class NewsController extends Controller
     }
     public function store(Request $request){
         $new = $request->all();
-        $neww=News::create($new);
+        $new=News::create($new);
         return redirect()->route('index');
     }
     public function create(){
@@ -49,5 +49,6 @@ class NewsController extends Controller
     public function getNews(){
         $news=News::all();
         return response()->json($news);
+
     }
 }
