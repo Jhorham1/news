@@ -35,4 +35,9 @@ class NewsController extends Controller
 
     }
 
+    //get news Retrofit
+    public function getNews(){
+        $news=News::all();
+        return response()->json($news);
+    }
 }
