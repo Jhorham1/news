@@ -11,10 +11,15 @@
 package cl.ucn.disc.dsm.jpetit.news.services;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import cl.ucn.disc.dsm.jpetit.news.model.News;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface ApiService {
 
+    @GET("api/v1/news")
+    Call<List<News>> getNews();
 }
 
