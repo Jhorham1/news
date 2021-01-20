@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,9 +16,12 @@
     <div class="card">
         <div class="card-header">
             <legend class="text-center header">Enter The News</legend>
+            <a href="{{ url('/index')}}"><button  class="left btn btn-primary btn-lg ">Back</button></a>
         </div>
+
         <div class="card-body">
-            <form class="form" method="post">
+            <form action="/create" method="POST">
+                {!! csrf_field() !!}
                 <fieldset>
 
                     <div class="form-row">
@@ -61,14 +67,14 @@
 
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea id="description" name="description" placeholder="Enter Description..."
-                                  class="form-control"></textarea>
+                        <input id="description" name="description" placeholder="Enter Description..."
+                                  class="form-control"></input>
                     </div>
 
                     <div class="form-group">
                         <label for="content">Content</label>
-                        <textarea id="content" name="content" placeholder="Enter Content..."
-                                  class="form-control"></textarea>
+                        <input id="content" name="content" placeholder="Enter Content..."
+                                  class="form-control"></input>
                     </div>
 
                     <div class="form-group">
@@ -77,10 +83,13 @@
                         <textarea class="form-control" id="message" name="message" placeholder="Enter your News "
                                   rows="7"></textarea>
                     </div>
+                    <div>
 
-                    <div class="text-center">
-                        <button type="submit" formaction="{{url('/news/index')}}" class="btn btn-primary btn-lg">Upload News</button>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Upload News</button>
+                        </div>
                     </div>
+
                 </fieldset>
                 <legend class="text-sm-right">AppIson</legend>
             </form>
@@ -90,3 +99,4 @@
 <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>
+@endsection
