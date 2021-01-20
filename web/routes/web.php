@@ -21,7 +21,10 @@ Route::post('/create','NewsController@store');
 
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('api/v1/news',[\App\Http\Controllers\NewsController::class, 'getNews']);
+
+
+
 
 
