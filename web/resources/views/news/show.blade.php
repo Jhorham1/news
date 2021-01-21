@@ -23,7 +23,7 @@
             <form action="/create" method="POST">
                 {!! csrf_field() !!}
                 <fieldset id="new">
-                    <div class="form-row">
+                    <div class="form-row" >
                         <div class="form-group col-md-6">
                             <label for="title">Title</label>
                             <input name="title" class="form-control" type="text" value="{{ $new->title }}" readonly>
