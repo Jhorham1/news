@@ -8,7 +8,11 @@ use mysql_xdevapi\Exception;
 
 class NewsController extends Controller
 {
-
+    /**
+     *  Authenticator method
+     *
+     * NewsController constructor.
+     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -21,24 +25,52 @@ class NewsController extends Controller
      */
     public function index(){
         $news=News::orderBy('id', 'Desc')->paginate();
-        return view('news.index',compact('news'));
+        $q=0;
+        return view('news.index',compact('news','q'));
     }
+
+    public function indexpage($q){
+
+    }
+
+    /**
+     * Save News in the database
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request){
         $new = $request->all();
         $new=News::create($new);
         return redirect()->route('index');
     }
+
+    /**
+     * Show create view
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function create(){
         return view('news.create');
     }
+
+    /**
+     * Show a New whit a Id
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function show($id){
         $new = News::find($id);
         return view('news.show', compact('new'));
     }
 
-    public function edit(){
-
-    }
+    /**
+     * Delete a New
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         News::find($id)->delete();

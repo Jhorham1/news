@@ -18,6 +18,7 @@ Route::resource('/', 'NewsController');
 Route::get('/index','NewsController@index');
 Route::get('/news/create', 'NewsController@create');
 Route::post('/create','NewsController@store');
+Route::get('/page={q}','NewsController@indexpage')->name('page');
 Route::get('/news/idnews={id}/vista','NewsController@show')->name('show');
 Route::get('/news/idnews={id}/delete','NewsController@destroy')->name('destroy');
 

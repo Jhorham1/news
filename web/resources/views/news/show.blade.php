@@ -74,6 +74,7 @@
 
 
                 </fieldset>
+
                 <legend class="text-sm-right">AppIson</legend>
             </form>
         </div>

@@ -44,7 +44,19 @@
 
 
                 @endforeach
+
             </table>
+            @if($q==0)
+
+
+            @elseif($q==20)
+                <tr>
+                    <a class="text" value=$q ></a>
+                    <a href="{{route('page', 'next')}}" >Next</a>
+                </tr>
+            @else
+            @endif
+
             <legend class="text-sm-right">AppIson</legend>
         </div>
     </div>

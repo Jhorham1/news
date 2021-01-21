@@ -60,8 +60,8 @@
 
                         <div class="form-group col-md-6">
                             <label for="published_at">Date</label>
-                            <input id="published_at" type="text" name="published_at" placeholder="Enter Date..."
-                                   class="form-control" required="required">
+                            <input id="published_at" type="date" name="published_at"  required value="{{old('fecha_hora')}}" placeholder="Enter Date..."
+                                   class="form-control">
                         </div>
                     </div>
 
